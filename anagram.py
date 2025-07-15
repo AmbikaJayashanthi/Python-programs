@@ -1,0 +1,12 @@
+a=input("A=")
+b=input("B=")
+a1=a.lower()
+b1=b.lower
+a2="".join(i for i in a1 if i not in " ")
+a3=sorted(a2)
+b2="".join(i for i in b1 if i not in " ")
+b3=sorted(b2)
+if(a3==b3):
+    print("ANAGRAM")
+else:
+    print("NOT ANAGRAM")

@@ -1,0 +1,29 @@
+a=input("Please enter the password:")
+dg=0
+up=0
+lw=0
+sp=0
+if(len(a)>7):
+    for i in a:
+        if(i.isdigit()):
+            dg=dg+1
+        elif(i.isupper()):
+            up=up+1
+        elif(i.islower()):
+            lw=lw+1
+        else:
+            sp=sp+1
+    for i in range(len(a)):
+        for j in range(1,len(a)):
+            if(a[i]==a[j]):
+                print("weak")
+                break
+            else:
+                continue
+    if(dg>0 and up>0 and lw>0 and sp>0):
+        print("Strong password!")
+    else:
+        print("Weak password!!!")
+else:
+    print("Minimum number of characters should be 8")
+            
