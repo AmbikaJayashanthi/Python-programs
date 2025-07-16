@@ -1,0 +1,14 @@
+b=int(input("Enter no of blocks:"))
+l=int(input("Enter no of lines:"))
+s=int(input("Enter no of stars:"))
+sum=0
+for i in range(b):
+    print(f"--------BLOCK {i+1}---------")
+    for i in range(l):
+        for j in range(s):
+            print("*",end=" ")
+        print()  
+    sum=sum+(l*s)
+    print(l*s)
+    l=l-1
+print(f"Total no of stars = {sum}")
