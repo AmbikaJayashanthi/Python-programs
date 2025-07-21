@@ -7,8 +7,6 @@ for i in range(len(boy)):
         if(boy[i]==girl[j]):
             boy[i]='2'
             girl[j]='2'
-print(boy)
-print(girl)
 count=0
 for i in boy:
     if(i!="2"):
