@@ -1,0 +1,16 @@
+import random
+class rect:
+    def __init__(self,a,b):
+        self.a=a
+        self.b=b
+    
+    def area(self):
+        return self.a*self.b
+nums=[]
+d=int(input("Enter the number of rectangles:"))
+for i in range(d):
+    r=rect(random.randint(1,5),random.randint(5,10))
+    nums.append(r)
+
+for i in nums:
+    print(i.area())

@@ -16,7 +16,7 @@ for i in range(3):
     print("---------ROUND {}--------".format(i+1))
     print("Dear {} guess your choice: ".format(name1))
     ch=int(input())
-    if(ch in player1 or ch in player2):
+    while(ch in player1 or ch in player2):
         print("already taken")
     player1.append(ch)
     if(ch in nums):
@@ -26,7 +26,7 @@ for i in range(3):
         print("----------->>WRONG")
     print("Dear {} guess your choice: ".format(name2))
     ch=int(input())
-    if(ch in player1 or ch in player2):
+    while(ch in player1 or ch in player2):
         print("already taken")
     player2.append(ch)
     if(ch in nums):
