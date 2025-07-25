@@ -1,0 +1,6 @@
+def find(task,time):
+
+
+task=[10,5,8]
+time=4
+find(task,time)

@@ -1,43 +1,47 @@
 def find(exp):
     operand = []
     operator = []
-    priority = {"+": 1, "-": 1, "*": 2, "/": 2, "//": 2}
-    def apply_operator():
-        op = operator.pop()
-        b = operand.pop()
-        a = operand.pop()
-        if op == '+':
-            operand.append(a + b)
-        elif op == '-':
-            operand.append(a - b)
-        elif op == '*':
-            operand.append(a * b)
-        elif op == '/':
-            operand.append(a / b)
-        elif op == '//':
-            operand.append(a // b)
+    priority = {'+': 2, '-': 2, '*': 10, '/': 10}
     i = 0
+
     while i < len(exp):
         if exp[i].isdigit():
-            num = ''
+            num = ""
             while i < len(exp) and exp[i].isdigit():
                 num += exp[i]
                 i += 1
             operand.append(int(num))
         else:
-            if exp[i:i+2] == '//':
-                curr_op = '//'
-                i += 2
-            else:
-                curr_op = exp[i]
-                i += 1
-            while operator and priority[operator[-1]] >= priority[curr_op]:
-                apply_operator()
-            operator.append(curr_op)
+            while operator and priority[operator[-1]] >= priority[exp[i]]:
+                op = operator.pop()
+                num2 = operand.pop()
+                num1 = operand.pop()
+                if op == '+':
+                    operand.append(num1 + num2)
+                elif op == '-':
+                    operand.append(num1 - num2)
+                elif op == '*':
+                    operand.append(num1 * num2)
+                else:
+                    operand.append(num1 // num2)
+            operator.append(exp[i])
+            i += 1
+
     while operator:
-        apply_operator()
+        op = operator.pop()
+        num2 = operand.pop()
+        num1 = operand.pop()
+        if op == '+':
+            operand.append(num1 + num2)
+        elif op == '-':
+            operand.append(num1 - num2)
+        elif op == '*':
+            operand.append(num1 * num2)
+        else:
+            operand.append(num1 // num2)
+
     return operand[0]
 
-exp = "10+2*3//4+3"
+exp = "10+2*3/4+3"
 res = find(exp)
-print(res)  
+print(res)
