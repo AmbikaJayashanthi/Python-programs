@@ -10,3 +10,5 @@ if(a3==b3):
     print("ANAGRAM")
 else:
     print("NOT ANAGRAM")
+
+
