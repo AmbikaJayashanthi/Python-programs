@@ -1,0 +1,14 @@
+def split_and_add(a,k):
+    if k<=0 or k>=len(a):
+        return a
+    first_part=a[:k]
+    second_part=a[k:]
+    result=second_part+first_part
+    return result
+
+a=[1,2,3,4,5,6,7]
+k=4
+result=split_and_add(a,k)
+print("Original array:",a)
+print(a[:k])
+print(a[k:])

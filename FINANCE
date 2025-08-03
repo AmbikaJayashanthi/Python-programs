@@ -1,0 +1,56 @@
+class Person:
+    def __init__(self, start_month):
+        self.start_month=start_month
+        self.months_paid=0
+        self.total_paid=0
+    def pay_emi(self):
+        if self.months_paid<6:
+            self.months_paid+=1
+            self.total_paid+=200
+            return 200
+        return 0
+
+def finance_simulation():
+    capital=10000
+    month=0
+    people=[]
+
+    for _ in range(10):
+        people.append(Person(month))
+        capital=capital-1000
+
+    monthly_data=[]
+    while True:
+        month+=1
+        collection=0
+
+        for person in people:
+            collection+=person.pay_emi()
+        monthly_data.append((month, collection, len(people)))
+
+        if month<=5:
+            new_people_count=collection//1000
+            for _ in range(new_people_count):
+                people.append(Person(month))
+                capital-=1000
+
+        capital+=collection
+        if all(p.months_paid==6 for p in people):
+            break
+
+    total_given=len(people)*1000
+    total_received=sum(p.total_paid for p in people)
+    profit=total_received - total_given
+
+    print("Simulation Complete\n-------------------")
+    print(f"Total Months: {month}")
+    print(f"Total People: {len(people)}")
+    print(f"Total Given: ₹{total_given}")
+    print(f"Total Received: ₹{total_received}")
+    print(f"Profit: ₹{profit}\n")
+    print("Monthly Summary:")
+    for m, col, count in monthly_data:
+        print(f"Month {m}: Collected ₹{col}, Total People: {count}")
+
+
+finance_simulation()

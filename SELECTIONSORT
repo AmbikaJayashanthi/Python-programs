@@ -1,0 +1,12 @@
+def selection(elements):
+    n=len(elements)
+    for i in range(n):
+        m=elements[i]
+        for j in range(i+1,n):
+            if elements[j]<m:
+                m,elements[j]=elements[j],m
+        elements[i]=m
+    return elements
+elements=[10,12,2,5,7,100,87]
+res=selection(elements)
+print(res)

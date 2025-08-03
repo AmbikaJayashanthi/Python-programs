@@ -1,0 +1,9 @@
+import pandas as pd
+import csv
+df=pd.read_csv('Book1.csv')
+
+df.head()
+print(df)
+print(df['Name'])
+print(df[df['age']>30])
+print(df.sort_values(by='age'))

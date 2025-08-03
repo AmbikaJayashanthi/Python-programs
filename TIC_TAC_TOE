@@ -1,0 +1,58 @@
+a = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+def draw_board():
+    print("\n\n\n TIC TAC TOE\n\n")
+    print("Player1:X    Player2:O\n")
+    print("     |     |     ")
+    print("  {}  |  {}  |  {}  ".format(a[0], a[1], a[2]))
+    print("_____|_____|_____")
+    print("     |     |     ")
+    print("  {}  |  {}  |  {}  ".format(a[3], a[4], a[5]))
+    print("_____|_____|_____")
+    print("     |     |     ")
+    print("  {}  |  {}  |  {}  ".format(a[6], a[7], a[8]))
+    print("     |     |     ")
+
+def check_win():
+
+    if a[0] == a[1] == a[2]: return 0
+    if a[3] == a[4] == a[5]: return 0
+    if a[6] == a[7] == a[8]: return 0
+ 
+    if a[0] == a[3] == a[6]: return 0
+    if a[1] == a[4] == a[7]: return 0
+    if a[2] == a[5] == a[8]: return 0
+
+    if a[0] == a[4] == a[8]: return 0
+    if a[2] == a[4] == a[6]: return 0
+ 
+    if all(i in ['X', 'O'] for i in a): return 1
+    return -1
+
+def play():
+    player = 1
+    status = -1
+    while status == -1:
+        draw_board()
+        print(f"Player {player}'s turn:")
+        try:
+            choice = int(input("Enter the position (1-9): ")) - 1
+            if a[choice] not in ['X', 'O']:
+                mark = 'X' if player == 1 else 'O'
+                a[choice] = mark
+                status = check_win()
+                if status == -1:
+                    player = 2 if player == 1 else 1
+            else:
+                print("Position already taken. Try again.")
+        except (ValueError, IndexError):
+            print("Invalid input. Please enter a number between 1 and 9.")
+
+    draw_board()
+    if status == 0:
+        print(f"Player {player} wins!")
+    else:
+        print("It's a draw!")
+
+
+play()
