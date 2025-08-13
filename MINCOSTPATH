@@ -1,0 +1,25 @@
+n=int(input("Enter the number of rows:"))
+m=int(input("Enter the number of columns:"))
+a=[]
+for i in range(n):
+    rows=[]
+    for j in range(m):
+        values=int(input("Enter the values:"))
+        rows.append(values)
+    a.append(rows)
+p=a[0][0]
+cost=a[0][0]
+for i in range(n-1):
+    for j in range(m-1):
+        if a[i][j+1]<a[i+1][j]:
+            cost=cost+a[i][j+1]
+            p=a[i][j+1]
+            
+        else:
+            cost=cost+a[i+1][j]
+            p=a[i+1][j]
+if n==1 and m==1:
+    print(cost)
+else:
+    cost=cost+a[n-1][m-1]
+    print(cost)    
